@@ -5,7 +5,9 @@ import com.waciao.utils.MybatisUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Author: Waciao
@@ -15,8 +17,79 @@ import java.util.List;
  */
 public class UserMapperTest {
 
+    /**
+     * 新增用户
+     */
     @Test
-    public void test() {
+    public void addUser() {
+
+        SqlSession sqlSession = MybatisUtils.getSqlSession();
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+        int res = mapper.addUser(new User(0, "嘻嘻", "123123")); // id为自增长,填几都无所谓
+        if (res > 0) {
+            System.out.println("插入成功");
+        }
+
+        sqlSession.commit();
+        sqlSession.close();
+
+    }
+
+    /**
+     * 万能的map
+     */
+    @Test
+    public void addUserMap() {
+        SqlSession sqlSession = MybatisUtils.getSqlSession();
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+        HashMap<String, Object> map = new HashMap<String, Object>();
+        map.put("userId", 8);
+        map.put("userName", "huo");
+        map.put("passWord", "123132");
+        int i = mapper.addUserMap(map);
+        if (i > 0) {
+            System.out.println("新增用户");
+        }
+        sqlSession.commit();
+        sqlSession.close();
+    }
+
+    /**
+     * 删除用户
+     */
+    @Test
+    public void deleteUser() {
+        SqlSession sqlSession = MybatisUtils.getSqlSession();
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+        int i = mapper.deleteUser(2);
+        if (i > 0) {
+            System.out.println("删除成功");
+        }
+        sqlSession.commit();
+        sqlSession.close();
+    }
+
+    /**
+     * 编辑用户
+     */
+    @Test
+    public void updateUser() {
+        SqlSession sqlSession = MybatisUtils.getSqlSession();
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+        int updateUser = mapper.updateUser(new User(4, "哈哈", "12123"));
+        if (updateUser > 0) {
+            System.out.println("更新成功");
+        }
+        sqlSession.commit();
+        sqlSession.close();
+
+    }
+
+    /**
+     * 查询所有用户
+     */
+    @Test
+    public void allUserList() {
         // 1. 获得sqlSession对象
         SqlSession sqlSession = MybatisUtils.getSqlSession();
 
@@ -54,4 +127,19 @@ public class UserMapperTest {
          */
 
     }
+
+    /**
+     * 根据 id 查询用户
+     */
+    @Test
+    public void getUserById() {
+        SqlSession sqlSession = MybatisUtils.getSqlSession();
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+        User user = mapper.getUserById(7);
+        System.out.println(user);
+        sqlSession.commit();
+        sqlSession.close();
+    }
+
+
 }
