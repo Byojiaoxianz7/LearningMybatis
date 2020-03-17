@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--namespace绑定对应的mapper接口-->
+<mapper namespace="com.waciao.dao.UserMapper">
+    <!--
+
+    id 对应 UserMapper 里的方法名
+    resultType里填执行sql语句之后返回的结果集,在UserMapper中可以看到, getUserList方法返回的是一个List<User>,所以填集合里泛型的东西,就是User
+    -->
+    <select id="getUserList" resultType="com.waciao.pojo.User">
+        SELECT * FROM mybatis.user;
+    </select>
+</mapper>
