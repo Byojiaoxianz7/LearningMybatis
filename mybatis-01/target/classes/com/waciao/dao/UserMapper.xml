@@ -37,4 +37,7 @@
         SELECT * FROM user WHERE id = #{id}
     </select>
 
+    <select id="getUserLike" resultType="com.waciao.pojo.User">
+        SELECT  * FROM mybatis.user WHERE name LIKE "%"#{value}"%";
+    </select>
 </mapper>

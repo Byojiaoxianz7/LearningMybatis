@@ -37,4 +37,8 @@
         SELECT * FROM user WHERE id = #{id}
     </select>
 
+    <!--模糊查询-->
+    <select id="getUserLike" resultType="com.waciao.pojo.User">
+        SELECT  * FROM mybatis.user WHERE name LIKE "%"#{value}"%";
+    </select>
 </mapper>

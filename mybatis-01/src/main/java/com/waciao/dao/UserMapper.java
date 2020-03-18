@@ -61,4 +61,12 @@ public interface UserMapper {
      */
     User getUserById(int id);
 
+    /**
+     * 模糊查询
+     *
+     * @param value
+     * @return
+     */
+    List<User> getUserLike(String value);
+
 }

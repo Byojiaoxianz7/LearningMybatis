@@ -141,5 +141,20 @@ public class UserMapperTest {
         sqlSession.close();
     }
 
+    /**
+     * 模糊查询
+     */
+    @Test
+    public void getUserLike() {
+        SqlSession sqlSession = MybatisUtils.getSqlSession();
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+        List<User> userList = mapper.getUserLike("%李%");
+        for (User user : userList) {
+            System.out.println(user);
+        }
+        sqlSession.close();
+
+    }
+
 
 }
