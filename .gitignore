@@ -1,6 +1,6 @@
 # IntelliJ project files
+.gitignore
 .idea
 *.iml
 out
 gen
-.gitignore
