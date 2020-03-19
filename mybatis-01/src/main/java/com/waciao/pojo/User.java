@@ -7,7 +7,10 @@ package com.waciao.pojo;
  * @Github: https://github.com/byojiaoxianz7
  */
 
-// 实体类
+/**
+ * 实体类
+ * @author Waciao
+ */
 public class User {
     private Integer id;
     private String name;
