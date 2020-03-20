@@ -4,7 +4,6 @@ import com.waciao.pojo.User;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @Author: Waciao
@@ -29,7 +28,6 @@ public interface UserMapper {
      */
     int addUserMap(HashMap<String, Object> map);
 
-
     /**
      * 删除用户
      *
@@ -44,14 +42,12 @@ public interface UserMapper {
      */
     int updateUser(User user);
 
-
     /**
      * 获取所有用户
      *
      * @return
      */
     List<User> getUserList();
-
 
     /**
      * 根据id查询用户

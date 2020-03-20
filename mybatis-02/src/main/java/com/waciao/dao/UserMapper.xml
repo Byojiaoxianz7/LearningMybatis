@@ -3,42 +3,26 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<!--namespace绑定对应的mapper接口-->
-<!--id 对应 UserMapper 里的方法名resultType里填执行sql语句之后返回的结果集,在UserMapper中可以看到, getUserList方法返回的是一个List<User>,所以填集合里泛型的东西,就是User-->
 <mapper namespace="com.waciao.dao.UserMapper">
 
-    <!--增加用户-->
     <insert id="addUser" parameterType="com.waciao.pojo.User">
         INSERT INTO mybatis.user(name, pwd) VALUES (#{name}, #{pwd});
     </insert>
 
-    <!--用 map 来新增用户, values内容与Test中属性值一致-->
-    <insert id="addUserMap" parameterType="map">
-        INSERT INTO mybatis.user VALUES (#{userId}, #{userName}, #{passWord});
-    </insert>
-
-    <!--删除用户-->
     <delete id="deleteUser" parameterType="int">
       DELETE FROM mybatis.user WHERE id = #{id};
     </delete>
 
-    <!--编辑用户-->
     <update id="updateUser" parameterType="com.waciao.pojo.User">
       UPDATE mybatis.user SET name = #{name},pwd=#{pwd} where id=#{id};
     </update>
 
-    <!--查询所有用户-->
     <select id="getUserList" resultType="com.waciao.pojo.User">
         SELECT * FROM mybatis.user;
     </select>
 
-    <!--根据id查询用户-->
     <select id="getUserById" resultType="com.waciao.pojo.User" parameterType="int">
         SELECT * FROM user WHERE id = #{id}
     </select>
 
-    <!--模糊查询-->
-    <select id="getUserLike" resultType="com.waciao.pojo.User">
-        SELECT  * FROM mybatis.user WHERE name LIKE "%"#{value}"%";
-    </select>
 </mapper>
