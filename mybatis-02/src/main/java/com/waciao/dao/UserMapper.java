@@ -1,6 +1,7 @@
 package com.waciao.dao;
 
 import com.waciao.pojo.User;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.HashMap;
 import java.util.List;
@@ -13,13 +14,37 @@ import java.util.List;
  */
 public interface UserMapper {
 
-    int addUser(User user);
+    /**
+     * 增加用户
+     * @param user
+     * @return
+     */
+    int addUser(@Param("user") User user);
 
-    int deleteUser(int id);
+    /**
+     * 删除用户
+     * @param id
+     * @return
+     */
+    int deleteUser(@Param("id") int id);
 
-    int updateUser(User user);
+    /**
+     * 更新用户信息
+     * @param user
+     * @return
+     */
+    int updateUser(@Param("user") User user);
 
+    /**
+     * 获取所有用户
+     * @return
+     */
     List<User> getUserList();
 
-    User getUserById(int id);
+    /**
+     * 按id获取用户
+     * @param id
+     * @return
+     */
+    User getUserById(@Param("id") int id);
 }
