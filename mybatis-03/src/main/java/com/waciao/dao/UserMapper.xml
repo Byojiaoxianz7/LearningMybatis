@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.waciao.dao.UserMapper">
+
+    <!--结果集映射-->
+    <!--id是下面select的resultMap的id, type是Mapper中返回的类-->
+    <resultMap id="UserMap" type="com.waciao.pojo.User">
+        <!-- column对应数据中的字段， property对应实体类中的属性-->
+        <!--和一致的可以不用写，只写不同的-->
+        <!--<result column="id" property="id" />-->
+        <!--<result column="name" property="name" />-->
+        <result column="pwd" property="password" />
+    </resultMap>
+
+
+    <select id="getUserById" resultMap="UserMap">
+        SELECT * FROM user WHERE id = #{id}
+    </select>
+</mapper>
