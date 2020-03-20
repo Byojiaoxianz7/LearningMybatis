@@ -19,8 +19,7 @@ public class UserMapperTest {
         SqlSession sqlSession = MybatisUtils.getSqlSession();
         //底层主要应用反射
         UserMapper mapper = sqlSession.getMapper(UserMapper.class);
-        mapper.deleteUser(5);
-        sqlSession.commit();
+        mapper.deleteUser(4);
         sqlSession.close();
     }
 }
