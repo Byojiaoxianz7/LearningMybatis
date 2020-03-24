@@ -2,6 +2,7 @@ package com.pojo;
 
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -12,7 +13,7 @@ import java.util.Date;
  */
 
 @Data
-public class Blog {
+public class Blog implements Serializable {
 
     /**
      *   1. 属性名 createTime 和字段名 create_time 不一致，需要在 mybatis-config.xml 开启驼峰命名规则
